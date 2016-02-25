@@ -6127,7 +6127,7 @@
 			path = ImagesOutput;
 			sourceTree = "<group>";
 		};
-		8FBE9E7D1C7AB06400BA6668 /* Home */ = {
+		8FBE9E7D1C7AB06400BA6668 /* caipu */ = {
 			isa = PBXGroup;
 			children = (
 				8FBE9E7E1C7AB06400BA6668 /* BasicNaviController.h */,
@@ -6140,6 +6140,7 @@
 				8FBE9E951C7AB06400BA6668 /* Model */,
 				8FBE9E9A1C7AB06400BA6668 /* View */,
 			);
+			name = caipu;
 			path = Home;
 			sourceTree = "<group>";
 		};
@@ -6341,7 +6342,7 @@
 		8FC50F801C58B81C0083A61E /* DaoJia */ = {
 			isa = PBXGroup;
 			children = (
-				8FBE9E7D1C7AB06400BA6668 /* Home */,
+				8FBE9E7D1C7AB06400BA6668 /* caipu */,
 				8FBE9F181C7AC20B00BA6668 /* Daojia */,
 				8FC0FED81C7AFD9800A64D61 /* Topic */,
 				8FBE9F031C7AB90100BA6668 /* Person */,

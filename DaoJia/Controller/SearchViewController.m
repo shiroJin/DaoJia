@@ -140,7 +140,6 @@
 #pragma mark - 创建表视图
 - (void)createTableView {
     _tableView = [[SearchTableView alloc] initWithFrame:CGRectMake(0, 50, kScreenWidth, kScreenHeight - 50) style:UITableViewStylePlain];
-    [self.view addSubview:_tableView];
 }
 
 
@@ -149,19 +148,21 @@
         _deals = [NSMutableArray array];
     }
     
-    if ([result[@"errno"]  isEqual: @0]) {
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NULL message:@"搜索结果为空" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:NULL];
-        [alert addAction:action];
-        
-        [self presentViewController:alert animated:YES completion:NULL];
-        
+    if (![result[@"errno"]  isEqual: @0]) {
         return;
     }
     
     NSDictionary *resultDic = result[@"data"];
     NSArray *arr = resultDic[@"deals"];
+    //搜索结果为空时。
+    if (arr.count == 0) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NULL message:@"搜索结果为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:NULL];
+        [alert addAction:action];
+        
+        [self presentViewController:alert animated:YES completion:NULL];
+    }
+    
     for (NSDictionary *dic in arr) {
         DealModel *deal = [[DealModel alloc] initContentWithDic:dic];
         [_deals addObject:deal];
@@ -171,6 +172,7 @@
         [self createTableView];
     }
     
+    [self.view addSubview:_tableView];
     _tableView.deals = _deals;
     [_tableView reloadData];
 }
