@@ -18,6 +18,7 @@
 #import "KitctnViewController.h"
 #import "LikeViewController.h"
 #import "ReadViewController.h"
+#import "HomeSearchViewController.h"
 
 @interface HomeTableView () <UITextFieldDelegate>
 {
@@ -891,8 +892,7 @@
     
     _textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth - 60, 30)];
 
-    //ico_cell_search.png
-//    textField.delegate = self;
+    _textField.delegate = self;
     _textField.backgroundColor = [UIColor grayColor];
     _textField.text = @"🔍搜索菜谱、专辑、豆友";
     _textField.textColor = [UIColor whiteColor];
@@ -924,7 +924,10 @@
 
 #pragma mark - UITexeFieldDelegate
 
-
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    HomeSearchViewController *homeSearch = [[HomeSearchViewController alloc] init];
+    [self.ViewController presentViewController:homeSearch animated:NO completion:NULL];
+}
 
 #pragma mark - UIScrollViewDelegate 
 

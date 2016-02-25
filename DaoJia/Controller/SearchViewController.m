@@ -34,6 +34,8 @@
     [self createSearchView];
     [self createMapBtn];
     [self createCRScannerBtn];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(search) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 //地图
@@ -105,6 +107,14 @@
     
     return YES;
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (_tableView) {
+        _tableView.deals = nil;
+        [_tableView removeFromSuperview];
+    }
+}
+
 //搜索
 - (void)search {
     NSString *searchContent = _textField.text;
@@ -139,7 +149,14 @@
         _deals = [NSMutableArray array];
     }
     
-    if (![result[@"errno"]  isEqual: @0]) {
+    if ([result[@"errno"]  isEqual: @0]) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NULL message:@"搜索结果为空" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:NULL];
+        [alert addAction:action];
+        
+        [self presentViewController:alert animated:YES completion:NULL];
+        
         return;
     }
     

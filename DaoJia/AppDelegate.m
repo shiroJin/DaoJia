@@ -27,14 +27,15 @@
     // Override point for customization after application launch.
     
     MainViewController *mainViewController = [[MainViewController alloc] init];
-    UIViewController *vc1 = [[HomeViewController alloc] init];
+    
+    DaojiaNavigationController *daojia = [UIStoryboard storyboardWithName:@"Daojia" bundle:nil].instantiateInitialViewController;
+    UIViewController *vc2 = [[HomeViewController alloc] init];
     UIViewController *vc3 = [[ClubViewController alloc] init];
     BaseNavigationVC *baseNaviCtrl = [[BaseNavigationVC alloc] initWithRootViewController:vc3];
     WodeNVController *vc4 = [[WodeNVController alloc] initWithRootViewController:[[WodeViewController alloc] init]];
-    DaojiaNavigationController *daojia = [UIStoryboard storyboardWithName:@"Daojia" bundle:nil].instantiateInitialViewController;
     mainViewController.viewControllers = @[
-                                           vc1,
                                            daojia,
+                                           vc2,
                                            baseNaviCtrl,
                                            vc4,
                                            ];

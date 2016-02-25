@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F4374911C7EB8D400C0119B /* HomeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4374901C7EB8D400C0119B /* HomeSearchViewController.m */; };
 		8F729FB51C68A8540003B7CD /* Daojia.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F729FB41C68A8540003B7CD /* Daojia.storyboard */; };
 		8F72A1601C6A155A0003B7CD /* DaojiaNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F72A1591C6A155A0003B7CD /* DaojiaNavigationController.m */; };
 		8F72A1611C6A155A0003B7CD /* DaojiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F72A15B1C6A155A0003B7CD /* DaojiaViewController.m */; };
@@ -1875,6 +1876,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F43748F1C7EB8D400C0119B /* HomeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewController.h; sourceTree = "<group>"; };
+		8F4374901C7EB8D400C0119B /* HomeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewController.m; sourceTree = "<group>"; };
 		8F729FB41C68A8540003B7CD /* Daojia.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Daojia.storyboard; path = ../Daojia.storyboard; sourceTree = "<group>"; };
 		8F72A1581C6A155A0003B7CD /* DaojiaNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaojiaNavigationController.h; sourceTree = "<group>"; };
 		8F72A1591C6A155A0003B7CD /* DaojiaNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaojiaNavigationController.m; sourceTree = "<group>"; };
@@ -4017,7 +4020,8 @@
 				8FBE9EFC1C7AB55500BA6668 /* WXLabel.h */,
 				8FBE9EFD1C7AB55500BA6668 /* WXLabel.m */,
 			);
-			path = SDK;
+			name = SDK;
+			path = DaoJia/SDK;
 			sourceTree = "<group>";
 		};
 		8F72A1691C6A18F10003B7CD /* AutoScrollerView */ = {
@@ -6158,6 +6162,8 @@
 				8FBE9E901C7AB06400BA6668 /* RecipeViewController.m */,
 				8FBE9E911C7AB06400BA6668 /* TopicViewController.h */,
 				8FBE9E921C7AB06400BA6668 /* TopicViewController.m */,
+				8F43748F1C7EB8D400C0119B /* HomeSearchViewController.h */,
+				8F4374901C7EB8D400C0119B /* HomeSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6314,6 +6320,7 @@
 				8FB8BB191C75E27500599213 /* libstdc++.tbd */,
 				8FB8BB171C75E26600599213 /* libicucore.tbd */,
 				8FB8BB151C75E25600599213 /* libz.1.2.5.tbd */,
+				8F72A1681C6A18F10003B7CD /* SDK */,
 				8FC50F801C58B81C0083A61E /* DaoJia */,
 				8FC50F9A1C58B81D0083A61E /* DaoJiaTests */,
 				8FC50FA51C58B81D0083A61E /* DaoJiaUITests */,
@@ -6334,7 +6341,6 @@
 		8FC50F801C58B81C0083A61E /* DaoJia */ = {
 			isa = PBXGroup;
 			children = (
-				8F72A1681C6A18F10003B7CD /* SDK */,
 				8FBE9E7D1C7AB06400BA6668 /* Home */,
 				8FBE9F181C7AC20B00BA6668 /* Daojia */,
 				8FC0FED81C7AFD9800A64D61 /* Topic */,
@@ -8237,6 +8243,7 @@
 				8F72A2421C6C46500003B7CD /* DailyModel.m in Sources */,
 				8FBE9F171C7AB90100BA6668 /* WodeViewController.m in Sources */,
 				8F72A1C61C6A18F20003B7CD /* SDWebImageDownloaderOperation.m in Sources */,
+				8F4374911C7EB8D400C0119B /* HomeSearchViewController.m in Sources */,
 				8F72A1C21C6A18F20003B7CD /* SDImageCache.m in Sources */,
 				8FC50F831C58B81C0083A61E /* main.m in Sources */,
 				8F72A2231C6AFD940003B7CD /* GuangguangStoreModel.m in Sources */,

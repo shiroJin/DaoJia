@@ -46,7 +46,7 @@
     [self createItems];
 }
 - (void)createItems {
-    NSArray *titles = @[@"菜谱", @"到家", @"广场", @"我的"];
+    NSArray *titles = @[@"到家", @"菜谱", @"广场", @"我的"];
     NSArray *imgName = @[@"menu_ico_home", @"menu_ico_shop", @"menu_ico_gather", @"menu_ico_center"];
     NSArray *selectedImgName = @[@"menu_ico_home_on", @"menu_ico_shop_on", @"menu_ico_gather_on", @"menu_ico_center_on"];
     
