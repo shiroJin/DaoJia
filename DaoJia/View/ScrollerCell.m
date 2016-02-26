@@ -68,7 +68,8 @@
     }
     for (NSString *url in array) {
         NSUInteger start = [url rangeOfString:@"="].location;
-        NSString *adID = [url substringWithRange:NSMakeRange(start + 1, 3)];
+        NSUInteger length = url.length;
+        NSString *adID = [url substringWithRange:NSMakeRange(start + 1, length - start - 1)];
         [_idArray addObject:adID];
     }
 }
