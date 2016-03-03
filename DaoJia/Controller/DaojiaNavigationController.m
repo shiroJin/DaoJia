@@ -8,11 +8,22 @@
 
 #import "DaojiaNavigationController.h"
 
-@interface DaojiaNavigationController ()
+@interface DaojiaNavigationController () <UIGestureRecognizerDelegate>
 
 @end
 
 @implementation DaojiaNavigationController
+
+- (void)loadView {
+    [super loadView];
+    //添加手势
+    id target = self.interactivePopGestureRecognizer.delegate;
+    SEL internalAction = NSSelectorFromString(@"handleNavigationTransition:");
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:target action:internalAction];
+    [self.view addGestureRecognizer:panGesture];
+    panGesture.delegate = self;
+    self.interactivePopGestureRecognizer.enabled = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,6 +32,24 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - Pan Gesture Delegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.childViewControllers.count == 1) {
+        return NO;
+    }
+    return YES;
+}
+
+#pragma mark - Navigation Pop and Push
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+    return [super popViewControllerAnimated:YES];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [super pushViewController:viewController animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

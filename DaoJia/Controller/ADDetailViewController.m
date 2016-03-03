@@ -12,6 +12,9 @@
 
 @interface ADDetailViewController ()
 
+@property (nonatomic, strong)UIView *customNavigationBar;
+@property (nonatomic, strong)UILabel *titleLabel;
+
 @end
 
 @implementation ADDetailViewController
@@ -36,16 +39,21 @@
 
 #pragma mark - 配置导航栏
 - (void)configNavbar {
-    self.navigationController.navigationBar.translucent = NO;
+    self.customNavigationBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+    [self.view addSubview:self.customNavigationBar];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 20, 40);
+    button.frame = CGRectMake(10, 22, 20, 40);
     [button setImage:[UIImage imageNamed:@"ico_back_arrow"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = item;
+    [self.customNavigationBar addSubview:button];
+    
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((kScreenWidth - 200) / 2, 20, 200, 44)];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.customNavigationBar addSubview:self.titleLabel];
 }
 - (void)back {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 请求数据
@@ -80,7 +88,7 @@
         [self tableView];
     }
     
-    self.title = title;
+    self.titleLabel.text = title;
     _tableView.coverUrl = coverUrl;
     _tableView.data = data;
     [_tableView reloadData];
@@ -88,13 +96,18 @@
 }
 
 - (void)tableView {
-    _tableView = [[ADDetailTableView alloc] initWithFrame:CGRectMake(0, 0,kScreenWidth, kScreenHeight - 64) style:UITableViewStyleGrouped];
+    _tableView = [[ADDetailTableView alloc] initWithFrame:CGRectMake(0, 64,kScreenWidth, kScreenHeight - 64) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     
     __weak typeof(self) wself = self;
     [_tableView addPullDownRefreshBlock:^{
         [wself request];
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

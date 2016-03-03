@@ -72,7 +72,7 @@
 
 - (UIView *)listView {
     if (!listView) {
-        listView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame) + kStatusBarHeight, self.bounds.size.width, 30 * 4)];
+        listView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame), self.bounds.size.width, 30 * 4)];
         listView.backgroundColor = [UIColor whiteColor];
         for (int i = 0; i < 4; i++) {
             TitleButton *button = [[TitleButton alloc] initWithFrame:CGRectMake(0, 30 * i, self.bounds.size.width, 30)];

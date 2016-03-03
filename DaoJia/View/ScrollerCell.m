@@ -80,8 +80,7 @@
     [_scroller setTapImgBlock:^(NSInteger currentIndex) {
         ADDetailViewController *view = [[ADDetailViewController alloc] init];
         view.adID = wself.idArray[currentIndex];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:view];
-        [wself.ViewController presentViewController:nav animated:YES completion:NULL];
+        [wself.navigationController pushViewController:view animated:YES];
     }];
 }
 

@@ -25,6 +25,9 @@
     double _longitude;
     double _latitude;
 }
+
+@property (nonatomic, strong)UIView *customBar;
+
 @end
 
 @implementation DaojiaViewController
@@ -32,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self configNavgationBarItem];
+    [self customNavigationBar];
     // Do any additional setup after loading the view.
     FeHandwriting *handWriting = [[FeHandwriting alloc] initWithView:self.view];
     [self.view addSubview:handWriting];
@@ -50,33 +53,34 @@
 
 
 #pragma mark - 导航栏标签配置
-- (void)configNavgationBarItem {
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-
+- (void)customNavigationBar {
+    self.navigationController.navigationBarHidden = YES;
+    self.customBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
+    [self.view addSubview:self.customBar];
+    
     [self createLeftItem];
     [self createTitleView];
     [self createRightItem];
 }
 
 - (void)createLeftItem {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 20, 60, 44)];
     label.text = @"到家";
+    label.textAlignment = NSTextAlignmentCenter;
     label.tag = 200;
     label.textColor = [UIColor orangeColor];
     label.font = [UIFont fontWithName:@"ArialBoldMT" size:20];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:label];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    [self.customBar addSubview:label];
 }
 
 - (void)createTitleView {
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake((kScreenWidth - 180) / 2, 27, 180, 30)];
     textField.layer.cornerRadius = 5;
     textField.layer.masksToBounds = YES;
     textField.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     textField.placeholder = @"搜索商品";
     textField.delegate = self;
-    self.navigationItem.titleView = textField;
+    [self.customBar addSubview:textField];
 }
 
 - (void)createRightItem {
@@ -97,9 +101,8 @@
         [self presentViewController:navi animated:YES completion:NULL];
     }];
     
-    button.frame = CGRectMake(0, 0, 60, 40);
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    button.frame = CGRectMake(kScreenWidth - 70, 22, 60, 40);
+    [self.customBar addSubview:button];
 }
 //文本框代理
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -141,7 +144,7 @@
             //显示最前面的地标信息
             CLPlacemark *firstPlacemark=[placemarks firstObject];
             //配置导航栏位置信息
-            UILabel *label = [self.navigationController.navigationBar viewWithTag:200];
+            UILabel *label = [self.customBar viewWithTag:200];
             NSString *city = firstPlacemark.locality;
             label.text = city;
             if (_currentCity != city) {
@@ -206,12 +209,17 @@
 
 #pragma mark - 创建表视图
 - (void)tableView {
-    _tableView = [[DaojiaTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 48 - 64) style:UITableViewStyleGrouped];
+    _tableView = [[DaojiaTableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 48 - 64) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     __weak typeof(self) wself = self;
     [_tableView addPullDownRefreshBlock:^{
         [wself request];
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {

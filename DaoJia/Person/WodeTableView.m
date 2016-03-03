@@ -174,12 +174,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 
-    return 210;
+    return 150;
 }
 //top登入 头视图
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
-    UITableViewHeaderFooterView *headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 210)];
+    UITableViewHeaderFooterView *headerView = [[UITableViewHeaderFooterView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
     headerView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_fill_top"]];
 
     CGFloat width = kScreenWidth / 4.5;

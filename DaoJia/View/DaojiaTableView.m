@@ -117,8 +117,7 @@
     if (indexPath.section == 1) {
         GoodsDetailController *goodsDetail = [[GoodsDetailController alloc] init];
         goodsDetail.goodsId = ((GuangguangStoreModel *)[self.data[@"guangguangStore"] objectAtIndex:indexPath.row]).GoodsId;
-        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:goodsDetail];
-        [self.ViewController presentViewController:navi animated:NO completion:NULL];
+        [self.navigationController pushViewController:goodsDetail animated:YES];
     }
 }
 

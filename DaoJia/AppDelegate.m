@@ -29,15 +29,14 @@
     MainViewController *mainViewController = [[MainViewController alloc] init];
     
     DaojiaNavigationController *daojia = [UIStoryboard storyboardWithName:@"Daojia" bundle:nil].instantiateInitialViewController;
-    UIViewController *vc2 = [[HomeViewController alloc] init];
-    UIViewController *vc3 = [[ClubViewController alloc] init];
-    BaseNavigationVC *baseNaviCtrl = [[BaseNavigationVC alloc] initWithRootViewController:vc3];
-    WodeNVController *vc4 = [[WodeNVController alloc] initWithRootViewController:[[WodeViewController alloc] init]];
+    UIViewController *home = [[HomeViewController alloc] init];
+    BaseNavigationVC *guangchang = [[BaseNavigationVC alloc] initWithRootViewController:[[ClubViewController alloc] init]];
+    WodeNVController *person = [[WodeNVController alloc] initWithRootViewController:[[WodeViewController alloc] init]];
     mainViewController.viewControllers = @[
                                            daojia,
-                                           vc2,
-                                           baseNaviCtrl,
-                                           vc4,
+                                           home,
+                                           guangchang,
+                                           person,
                                            ];
     
     

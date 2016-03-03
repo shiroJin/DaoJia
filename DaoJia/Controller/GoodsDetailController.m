@@ -66,7 +66,7 @@
     [self.view addSubview:statusBackground];
 }
 - (void)back {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)share {
 //    id<ISSCAttachment>img = [ShareSDK imageWithUrl:_goods.CoverUrl];
@@ -136,6 +136,10 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    self.tabBarController.tabBar.hidden = YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
