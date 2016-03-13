@@ -67,7 +67,7 @@
     GoodsDetailController *goodsDetail = [[GoodsDetailController alloc] init];
     goodsDetail.goodsId = ((ADGoodsModel *)self.data[indexPath.row]).GoodsId;
     
-    [self.ViewController presentViewController:goodsDetail animated:YES completion:NULL];
+    [self.navigationController pushViewController:goodsDetail animated:YES];
 }
 
 /*

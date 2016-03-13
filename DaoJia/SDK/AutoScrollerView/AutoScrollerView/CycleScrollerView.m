@@ -238,10 +238,7 @@
     
     timer = nil;
     timer = [NSTimer timerWithTimeInterval:_timeInterval target:self selector:@selector(scroll) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    //此方法不能调用，原因不详
-    //    timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(scroll) userInfo:nil repeats:NO];
-    //    [[NSRunLoop currentRunLoop] run];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)stopTimer {
